@@ -1,0 +1,90 @@
+import random
+
+print('How many pencils would you like to use:')
+while True:
+    number_of_pencils = input()
+    if not number_of_pencils.isdigit():
+        print('The number of pencils should be numeric')
+    elif int(number_of_pencils) == 0:
+        print('The number of pencils should be positive')
+    else:
+        number_of_pencils = int(number_of_pencils)
+        break
+
+print('Who will be the first (John, Jack):')
+user = "John"
+bot = "Jack"
+pencil = "|"
+list_names = ["John", "Jack"]
+active = ""
+selection = 0
+bot_selection = 0
+
+while True:
+    name = input()
+    if name in list_names:
+        if name == "John":
+            active = user
+        if name == "Jack":
+            active = bot
+        break
+    else:
+        print("Choose between 'John' and 'Jack'")
+        
+
+while number_of_pencils > 0:
+    if active == user:
+        print('|' * number_of_pencils)
+        print(active + "'s turn:")
+        selection = input()
+        if selection not in ('1', '2', '3'):
+            print("Possible values: '1', '2' or '3'")
+            continue
+        elif int(selection) > number_of_pencils:
+            print('Too many pencils were taken')
+            continue
+        
+        else:
+            number_of_pencils = number_of_pencils - int(selection)
+                        
+        active = bot
+                 
+            
+    elif active == bot:
+        print('|' * number_of_pencils)
+        print(active + "'s turn:")
+        
+        if number_of_pencils % 4 == 0:
+            bot_selection = 3
+            if bot_selection > number_of_pencils:
+                bot_selection = number_of_pencils
+            
+        elif number_of_pencils % 4 == 3:
+            bot_selection = 2
+            if bot_selection > number_of_pencils:
+                bot_selection = number_of_pencils
+            
+        elif number_of_pencils % 4 == 2:
+            bot_selection = 1
+            if bot_selection > number_of_pencils:
+                bot_selection = number_of_pencils
+            
+        else:
+            bot_selection = random.randint(1,3)
+            if bot_selection > number_of_pencils:
+                bot_selection = number_of_pencils
+
+        number_of_pencils = number_of_pencils - bot_selection
+        
+        print(bot_selection)
+        
+        active = user
+
+else:
+    if active == user:
+        active = bot
+        print("John won!")
+            
+    elif active == bot:
+        active = user
+        print("Jack won!")
