@@ -1,0 +1,88 @@
+# Write your code here
+import random
+
+#Global
+win_results = 0
+lost_results = 0
+
+#Printing
+print("H A N G M A N\n")
+
+while True:
+    decision = (input('Type "play" to play the game, "results" to show the scoreboard, and "exit" to quit:'))
+    list_words = ["python", "java", "swift", "javascript"]
+    attemps = 8
+    pc_selection = random.choice(list_words)
+    word = list(pc_selection)
+    dashes = "-" * len(pc_selection)
+    dictionary = set(pc_selection)
+    letter_list = []
+    symbols = ["-", "*", "+"]
+    
+    if decision == "play":
+    
+        while attemps <= 8 and attemps > 0:
+        
+            print(dashes)
+            letter = input(f'Input a letter:')
+            letter_alpha = letter.isalpha()
+            letter_lower = letter.islower()
+            letter_space = letter.isspace()
+            letter_digit = letter.isdigit()
+
+        
+            if letter in letter_list:
+                print("You've already guessed this letter.")
+                continue
+            
+            if letter_space == True or letter == "":
+                print("Please, input a single letter.")
+                continue
+        
+            if letter_lower == False or letter in symbols or letter_digit == True:
+                print("Please, enter a lowercase letter from the English alphabet.")
+                continue
+        
+            if letter_alpha == False or len(letter) != 1:
+                print("Please, input a single letter.")
+                continue
+               
+            if letter in dictionary:
+                for i in range(0, len(dashes)):
+                    if letter == dashes[i]:
+                        attemps = attemps - 1
+                        letter_list.append(letter)
+                        print("No improvements.")
+                        break
+                    
+            if letter in dictionary:
+                for i in range(0, len(pc_selection)):
+                    if letter == pc_selection[i]:
+                        dashes = dashes[:i] + letter + dashes[i+1:]
+                        letter_list.append(letter)
+                        pass
+        
+            if dashes == pc_selection:
+                print(pc_selection)
+                print(f"You guessed the word {dashes}!")
+                print("You survived!")
+                win_results = win_results + 1
+                break
+            
+            if letter not in dictionary:
+                print(f"That letter doesn't appear in the word.")
+                attemps = attemps - 1
+                letter_list.append(letter)
+                continue
+                
+        if attemps == 0:
+            print()
+            print("You lost!")
+            lost_results = lost_results + 1
+
+    elif decision == "results":
+        print(f"You won: {win_results} times")
+        print(f"You lost: {lost_results} times")
+    
+    elif decision == "exit":
+        break
