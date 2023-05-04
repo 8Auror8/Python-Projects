@@ -1,0 +1,77 @@
+# Write your code here
+water = 400
+milk = 540
+coffee = 120
+cups = 9
+earns = 550
+
+def aviso():
+    print("The coffee machine has:")
+    print(water, "ml of water")
+    print(milk, "ml of milk")
+    print(coffee, "g of coffee beans")
+    print(cups, "disposable cups")
+    print("$" + str(earns), "of money")
+    print()
+
+def fill():
+    print("Write how many ml of water you want to add:")
+    fill_water = int(input())
+    global water
+    water += fill_water
+    print("Write how many ml of milk you want to add:")
+    fill_milk = int(input())
+    global milk
+    milk += fill_milk
+    print("Write how many grams of coffee beans you want to add:")
+    fill_coffee = int(input())
+    global coffee
+    coffee += fill_coffee
+    print("Write how many disposable cups you want to add:")
+    fill_cups = int(input())
+    global cups
+    cups += fill_cups
+
+def buy(a):
+    if a == "1":
+        global water
+        water -= 250
+        global coffee
+        coffee -= 16
+        global cups
+        cups -= 1
+        global earns
+        earns += 4
+    elif a == "2":
+        water -= 350
+        global milk
+        milk -= 75
+        coffee -= 20
+        cups -= 1
+        earns += 7
+    elif a == "3":
+        water -= 200
+        milk -= 100
+        coffee -= 12
+        cups -= 1
+        earns += 6
+    
+aviso()
+
+print("Write action (buy, fill, take): ")
+action = input()
+
+if action == "take":
+    print("I gave you $", earns,"\n")
+    earns = 0
+    aviso()
+
+elif action == "fill":
+    fill()
+    aviso()
+
+elif action == "buy":
+    print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ", "\n")
+    selection_buy = input()
+    buy(selection_buy)
+    aviso()
