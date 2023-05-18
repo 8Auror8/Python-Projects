@@ -1,0 +1,118 @@
+# Basics
+hypen = "-"
+zero = "0"
+zeros = []
+grid = [hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen, hypen]
+
+#Functions
+def printGrid():
+    print()
+    print(grid[0], grid[1], grid[2], grid[3])
+    print(grid[4], grid[5], grid[6], grid[7])
+    print(grid[8], grid[9], grid[10], grid[11])
+    print(grid[12], grid[13], grid[14], grid[15])
+
+def cleanGrid():
+    for i in range(len(grid)):
+        if grid[i] == zero:
+            grid[i] = hypen
+
+def putZeros():
+    for i in zeros:
+        grid[i] = zero
+
+#Starting
+
+selection = input()
+
+printGrid()
+
+if selection == "O":
+    zeros = [5, 6, 9, 10]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "I":
+    zeros = [1, 5, 9, 13]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [4, 5, 6, 7]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "S":
+    zeros = [6, 5, 9, 8]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [5, 9, 10, 14]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "Z":
+    zeros = [6, 5, 9, 8]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [5, 9, 10, 14]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "L":
+    zeros = [1, 5, 9, 10]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [2, 4, 5, 6]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [1, 2, 6, 10]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [4, 5, 6, 8]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "J":
+    zeros = [2, 6, 9, 10]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [4, 5, 6, 10]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [1, 2, 5, 9]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [0, 4, 5, 6]
+    putZeros()
+    printGrid()
+    cleanGrid()
+
+elif selection == "T":
+    zeros = [1, 4, 5, 6]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [1, 4, 5, 9]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [4, 5, 6, 9]
+    putZeros()
+    printGrid()
+    cleanGrid()
+    zeros = [1, 5, 6, 9]
+    putZeros()
+    printGrid()
+    cleanGrid()
